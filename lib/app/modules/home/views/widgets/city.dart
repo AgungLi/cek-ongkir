@@ -68,21 +68,20 @@ class Kota extends GetView<HomeController> {
         onChanged: (cityValue) {
           if (cityValue != null) {
             if (tipe == "asal") {
-              controller.hiddenKotaAsal.value = false;
-              controller.provAsalId.value = int.parse(cityValue.provinceId!);
+              controller.kotaAsalId.value = int.parse(cityValue.cityId!);
             } else {
-              controller.hiddenKotaTujuan.value = false;
-              controller.provTujuanId.value = int.parse(cityValue.provinceId!);
+              controller.kotaTujuanId.value = int.parse(cityValue.cityId!);
             }
           } else {
             if (tipe == "asal") {
-              controller.hiddenKotaAsal.value = true;
-              controller.provAsalId.value = 0;
+              print("Tidak memilih kota . kabupaten asal apapun");
+              controller.kotaAsalId.value = 0;
             } else {
-              controller.hiddenKotaTujuan.value = true;
-              controller.provTujuanId.value = 0;
+              print("Tidak memilih kota . kabupaten tujuan apapun");
+              controller.kotaTujuanId.value = 0;
             }
           }
+          controller.showButton();
         },
         popupItemBuilder: (context, item, isSelected) {
           return Container(
